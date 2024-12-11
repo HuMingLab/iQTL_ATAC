@@ -20,7 +20,7 @@ Find the RNA-seq pipeline [here](https://github.com/lindsayhrlee/iQTL_RNA).
 We recommend to create a Conda environment that contains all the required software above. This pipeline can be run simply by:
 
 ```
-./atac_phasing.sh mouse CC1 CC2 Name prefix_fastq
+./atac_phasing.sh [mouse] [CC1] [CC2] [Name] [prefix_fastq]
 ```
 
  The required input variables are:

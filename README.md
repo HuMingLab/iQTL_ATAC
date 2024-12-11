@@ -4,5 +4,5 @@
 - Samtools v1.9
 - Pysam v0.18.0
 - Python v3.6.8
- - Numpy v1.19.5 
- - Pandas v1.1.5
+ * Numpy v1.19.5 
+ * Pandas v1.1.5

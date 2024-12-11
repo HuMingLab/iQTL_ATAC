@@ -1,8 +1,8 @@
 # iQTL pipline for ATAC-seq
 ## Allelic ATAC-seq mapping for CCGG.
 
-Find the Hi-C pipeline here (will be updating)
-Find the RNA-seq pipeline here
+Find the Hi-C pipeline [here](https://github.com/Xieeeee/AlleliC/)
+Find the RNA-seq pipeline [here](https://github.com/lindsayhrlee/iQTL_RNA)
 
 ### Requirements
 

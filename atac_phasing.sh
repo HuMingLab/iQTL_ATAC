@@ -5,9 +5,9 @@ NAME=$4
 CC1=$2
 CC2=$3
 PAT=$5
-DATA=/proj/HuMingLab/60_mice_data/iQTL_RNA_ATAC_YinShen/ATAC_all_data/
-OUT=/home/leeh7/iQTL/Wanying_ATAC/ATAC_1101/${mouse}
-genome=/home/leeh7/iQTL/fasta/renamed/
+DATA=
+OUT=
+genome=
 T=88
 
 F1=${DATA}/${PAT}_R1_001.fastq.gz
@@ -59,14 +59,14 @@ echo "Alignment finished!!!"
 samtools sort -@ ${T} -o ${NAME}_${CC1}x${CC2}_genome_sorted.bam ${NAME}_${CC1}x${CC2}_genome.bam
 
 #conda install bioconda::picard (https://anaconda.org/bioconda/picard)
-java -jar /home/leeh7/software/picard_2.27.5.jar MarkDuplicates -I ${NAME}_${CC1}x${CC2}_genome_sorted.bam \
+java -jar picard_2.27.5.jar MarkDuplicates -I ${NAME}_${CC1}x${CC2}_genome_sorted.bam \
  -O ${NAME}_${CC1}x${CC2}_genome_sorted.dedup.bam -M  ${OUT}/2.statics/${NAME}_${CC1}x${CC2}_genome.dedup_metrics -REMOVE_DUPLICATES true 
 #picard MarkDuplicates -I ${NAME}_${CC1}x${CC2}_genome_sorted.bam \
 # -O ${NAME}_${CC1}x${CC2}_genome_sorted.dedup.bam -M  ${OUT}/2.statics/${NAME}_${CC1}x${CC2}_genome.dedup_metrics -REMOVE_DUPLICATES true 
 samtools sort -@ ${T} -n -o ${NAME}_${CC1}x${CC2}_genome_srt.bam ${NAME}_${CC1}x${CC2}_genome_sorted.dedup.bam 
 #conda install pysam
 echo "Starting split..."
-python /home/leeh7/iQTL/Wanying_ATAC/ATAC_1101/0.split_unique.py ${NAME}_${CC1}x${CC2}_genome_srt.bam ${NAME}_${CC1} ${NAME}_${CC2}
+python 0.split_unique.py ${NAME}_${CC1}x${CC2}_genome_srt.bam ${NAME}_${CC1} ${NAME}_${CC2}
 cat  ${NAME}_Sstats.txt| awk 'NR==1 {print $0}' >> ${OUT}/2.statics/${NAME}_unique_file.txt
 cat  ${NAME}_Sstats.txt| awk 'NR==5 {print $0}' >> ${OUT}/2.statics/${NAME}_unique_file.txt
 cat  ${NAME}_Sstats.txt| awk 'NR==6 {print $0}' >> ${OUT}/2.statics/${NAME}_unique_file.txt
@@ -83,7 +83,7 @@ samtools index ${OUT}/3.bam/sorted_${NAME}_${CC2}_common.bam
 samtools index ${OUT}/3.bam/sorted_${NAME}_${CC1}_unique.bam
 samtools index ${OUT}/3.bam/sorted_${NAME}_${CC2}_unique.bam
 
-cd /home/leeh7/iQTL/Wanying_ATAC/ATAC_1101
+cd WORKING DIRECTORY
 
 ./run_extract.sh ${CC1} ${CC2} ${NAME}
 ./run_counts.sh ${CC1} ${CC2} ${NAME}

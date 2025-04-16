@@ -59,10 +59,17 @@ echo "Alignment finished!!!"
 samtools sort -@ ${T} -o ${NAME}_${CC1}x${CC2}_genome_sorted.bam ${NAME}_${CC1}x${CC2}_genome.bam
 
 #conda install bioconda::picard (https://anaconda.org/bioconda/picard)
+## PICARD options. You may use picard.jar with java or install picard via bioconda. comment/uncomment the appropriate method 
+
+# java option
 java -jar picard_2.27.5.jar MarkDuplicates -I ${NAME}_${CC1}x${CC2}_genome_sorted.bam \
  -O ${NAME}_${CC1}x${CC2}_genome_sorted.dedup.bam -M  ${OUT}/2.statics/${NAME}_${CC1}x${CC2}_genome.dedup_metrics -REMOVE_DUPLICATES true 
+
+#bioconda option
+
 #picard MarkDuplicates -I ${NAME}_${CC1}x${CC2}_genome_sorted.bam \
 # -O ${NAME}_${CC1}x${CC2}_genome_sorted.dedup.bam -M  ${OUT}/2.statics/${NAME}_${CC1}x${CC2}_genome.dedup_metrics -REMOVE_DUPLICATES true 
+
 samtools sort -@ ${T} -n -o ${NAME}_${CC1}x${CC2}_genome_srt.bam ${NAME}_${CC1}x${CC2}_genome_sorted.dedup.bam 
 #conda install pysam
 echo "Starting split..."

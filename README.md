@@ -15,6 +15,11 @@ Find the RNA-seq pipeline [here](https://github.com/lindsayhrlee/iQTL_RNA).
     * Numpy v1.19.5
     * Pandas v1.1.5
 
+### Required input
+- fasta file (indexed by bowtie2)
+- The fastq files should be named CC1xCC2_mousename_R1_*.fastq.gz
+
+Be sure to add and edit the locations indicated in the main shellscript (atac_phasing.sh)
 
 ### Running the pipeline
 We recommend to create a Conda environment that contains all the required software above. This pipeline can be run simply by:

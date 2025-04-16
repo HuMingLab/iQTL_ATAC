@@ -30,6 +30,7 @@ We recommend to create a Conda environment that contains all the required softwa
 4.	Name = CC1xCC2_mouse
 5.	prefix_fastq = the prefix of the fastq file
 
+Be sure to add/edit the directories in the shellscript (especially the location of picard and on line 86).
 ### Contact Us
 
 For any questions regarding this software, contact Ming Hu (hum@ccf.org) or Lindsay Lee (leeh7@ccf.org).
